@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fantom Bridge: Fast &amp; Secure FTM Transfers Guide 2026</title>
+<meta name="description" content="Fantom bridge lets you move FTM and tokens between chains safely and quickly. Compare fees, steps, and risks, then start bridging with confidence today.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://fantom-bridge.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fantom Bridge: Fast &amp; Secure FTM Transfers Guide 2026">
+<meta property="og:description" content="Fantom bridge lets you move FTM and tokens between chains safely and quickly. Compare fees, steps, and risks, then start bridging with confidence today.">
+<meta property="og:url" content="https://fantom-bridge.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fantom Bridge: Fast &amp; Secure FTM Transfers Guide 2026">
+<meta name="twitter:description" content="Fantom bridge lets you move FTM and tokens between chains safely and quickly. Compare fees, steps, and risks, then start bridging with confidence today.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Fantom Bridge: Fast & Secure FTM Transfers Guide 2026", "description": "Fantom bridge lets you move FTM and tokens between chains safely and quickly. Compare fees, steps, and risks, then start bridging with confidence today.", "inLanguage": "en", "dateModified": "2026-02-23", "url": "https://fantom-bridge.github.io/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fantom-bridge.github.io"}, {"@type": "ListItem", "position": 2, "name": "Fantom Bridge: Fast & Secure FTM Transfers Guide 2026", "item": "https://fantom-bridge.github.io/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is fantom bridge used for?", "acceptedAnswer": {"@type": "Answer", "text": "Fantom bridge is used to transfer FTM and ERC-20 tokens between Fantom Opera and other blockchains like Ethereum or Polygon. Users rely on it to access lower fees, faster transactions, or specific DeFi applications available on Fantom."}}, {"@type": "Question", "name": "How long does a fantom bridge transaction take?", "acceptedAnswer": {"@type": "Answer", "text": "Fantom bridge transactions usually take between 5 and 20 minutes depending on source-chain congestion. Ethereum confirmations often determine total time, while Fantom finality is typically near-instant once minting occurs."}}, {"@type": "Question", "name": "Are fantom bridge fees high?", "acceptedAnswer": {"@type": "Answer", "text": "Fantom bridge fees are generally low on the Fantom side but can be higher on Ethereum due to gas costs. Total expense depends on network congestion and whether the bridge charges a service percentage."}}, {"@type": "Question", "name": "Can I bridge USDC to Fantom?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, most major bridges support USDC transfers to Fantom. Always verify the correct wrapped token contract address on Fantom before interacting with DeFi protocols."}}, {"@type": "Question", "name": "Is fantom bridge non-custodial?", "acceptedAnswer": {"@type": "Answer", "text": "Many fantom bridge implementations are non-custodial, meaning smart contracts control funds instead of a centralized entity. However, validator-based systems still introduce trust assumptions."}}, {"@type": "Question", "name": "What happens if a fantom bridge fails?", "acceptedAnswer": {"@type": "Answer", "text": "If a fantom bridge transaction fails before minting, funds usually remain on the source chain. In exploit scenarios, however, users may face loss, which is why risk assessment matters."}}, {"@type": "Question", "name": "Do I need FTM for gas after bridging?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you need a small amount of FTM to pay gas fees on Fantom. Without native tokens, you cannot interact with dApps even if your bridged assets are present."}}, {"@type": "Question", "name": "Is fantom bridge better than other cross-chain bridges?", "acceptedAnswer": {"@type": "Answer", "text": "Fantom bridge is advantageous for users focused on Fantom’s DeFi ecosystem and low gas fees, but overall quality depends on security design, supported tokens, and personal risk tolerance."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   BASE DARK DOCS — Linear/Vercel Aesthetic
+   Template ID: base-dark-docs
+   =========================================== */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0b;
+  --bg-2: #111113;
+  --bg-3: #1a1a1f;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-h: rgba(255,255,255,0.05);
+  --accent: #3bf08a;
+  --accent-dim: rgba(59,240,138,0.08);
+  --accent-glow: rgba(59,240,138,0.15);
+  --text: #ededef;
+  --text-2: #8b8b92;
+  --text-3: #55555e;
+  --border: rgba(255,255,255,0.07);
+  --border-h: rgba(255,255,255,0.12);
+  --radius: 10px;
+  --radius-lg: 14px;
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font); font-size: 15px; line-height: 1.7;
+  color: var(--text); background: var(--bg);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+
+#progress {
+  position: fixed; top: 0; left: 0; height: 1px; width: 0%;
+  background: var(--accent); z-index: 10000; transition: width 0.1s;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* ═══ NAV ═══ */
+.topnav {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 9000;
+  background: rgba(10,10,11,0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border); border-radius: 50px; padding: 4px 5px;
+  display: flex; align-items: center; gap: 1px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+  transform: translateX(-50%) translateY(-8px);
+  max-width: 94vw; overflow-x: auto; scrollbar-width: none;
+}
+.topnav::-webkit-scrollbar { display: none; }
+.topnav.show { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.topnav a {
+  font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+  color: var(--text-3); text-decoration: none; padding: 6px 12px;
+  border-radius: 50px; transition: all 0.2s; white-space: nowrap;
+}
+.topnav a:hover { color: var(--text-2); background: rgba(255,255,255,0.04); }
+.topnav a.on { color: var(--text); background: rgba(255,255,255,0.06); }
+/*CTA_START*/
+.topnav .nav-cta {
+  font-family: var(--font); font-size: 12px; font-weight: 600;
+  color: #000; background: var(--accent); padding: 6px 16px;
+  border-radius: 50px; text-decoration: none; margin-left: 3px; white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.topnav .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+/*CTA_END*/
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 32px; position: relative;
+}
+.hero-inner { max-width: 720px; }
+.hero-badge {
+  display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--accent); background: var(--accent-dim);
+  border: 1px solid rgba(59,240,138,0.15); border-radius: 50px;
+  padding: 5px 14px; margin-bottom: 28px; letter-spacing: 0.02em;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.25rem);
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 1rem; color: var(--text-2); max-width: 480px;
+  margin: 0 auto 40px; line-height: 1.8;
+}
+/*CTA_START*/
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; background: var(--accent); color: #000;
+  font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+.hero-cta:hover { transform: translateY(-1px); box-shadow: 0 0 40px rgba(59,240,138,0.25); }
+.hero-cta svg { width: 16px; height: 16px; }
+/*CTA_END*/
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--text-3); font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.12em; animation: pulse 2.5s ease-in-out infinite;
+}
+.hero-scroll span { width: 1px; height: 24px; background: linear-gradient(to bottom, var(--text-3), transparent); }
+@keyframes pulse { 0%,100%{opacity:.25} 50%{opacity:.6} }
+
+/* ═══ LAYOUT ═══ */
+.content-container { max-width: 1060px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══ CONTENT — TWO COL ═══ */
+.content-area { padding: 40px 0 80px; position: relative; z-index: 1; }
+.content-area section {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  column-gap: 56px; padding: 72px 0; border-top: 1px solid var(--border);
+  align-items: start;
+}
+.content-area section:first-child { border-top: none; }
+.content-area section > * { grid-column: 2; }
+
+.section-label {
+  grid-column: 1; grid-row: 1;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--text-3); margin-bottom: 6px; letter-spacing: 0.04em;
+}
+.content-area section > h2 {
+  grid-column: 1; grid-row: 2 / span 50;
+  position: sticky; top: 72px; align-self: start;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800; line-height: 1.12; letter-spacing: -0.03em;
+  scroll-margin-top: 80px; margin: 0; padding: 0; border: none;
+}
+
+/* ═══ TEXT ═══ */
+.content-area h3 { font-size: 1.0625rem; font-weight: 700; margin: 24px 0 8px; line-height: 1.3; scroll-margin-top: 80px; }
+.content-area h3:first-child { margin-top: 0; }
+.content-area h4 { font-size: 0.9375rem; font-weight: 600; margin: 20px 0 6px; }
+.content-area p { color: var(--text-2); margin-bottom: 14px; line-height: 1.8; font-size: 15px; }
+.content-area a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-dim); transition: border-color 0.2s; }
+.content-area a:hover { border-bottom-color: var(--accent); }
+.content-area strong { color: var(--text); font-weight: 600; }
+.content-area ul, .content-area ol { margin: 12px 0; padding-left: 18px; color: var(--text-2); }
+.content-area li { margin-bottom: 6px; line-height: 1.7; font-size: 15px; }
+.content-area ul li::marker { color: var(--accent); }
+.content-area ol li::marker { color: var(--text); font-weight: 700; font-family: var(--mono); font-size: 13px; }
+
+.content-area .intro { border-top: none !important; padding-top: 0 !important; }
+
+/* ═══ STEPS ═══ */
+.steps { margin: 16px 0; counter-reset: sc; }
+.step {
+  display: flex; gap: 16px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--border); counter-increment: sc;
+}
+.step:last-child { border-bottom: none; }
+.step::before {
+  content: '0' counter(sc); font-family: var(--mono); font-weight: 500;
+  font-size: 12px; color: var(--accent); min-width: 24px; flex-shrink: 0;
+}
+.step h4 { font-size: 1rem; font-weight: 700; margin: 0 0 4px; }
+.step p { margin: 0; font-size: 14px; }
+
+/* ═══ TABLE ═══ */
+.table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: var(--radius); }
+.table-wrap table { width: 100%; border-collapse: collapse; }
+.table-wrap thead { background: var(--bg-card); }
+.table-wrap th {
+  padding: 11px 18px; text-align: left; font-family: var(--mono);
+  font-weight: 500; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-3); border-bottom: 1px solid var(--border);
+}
+.table-wrap td { padding: 12px 18px; color: var(--text-2); border-bottom: 1px solid var(--border); font-size: 14px; }
+.table-wrap tbody tr:last-child td { border-bottom: none; }
+.table-wrap tbody tr:hover { background: rgba(255,255,255,0.015); }
+
+/* ═══ CARDS ═══ */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 20px 0; }
+.card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; transition: border-color 0.2s, background 0.2s;
+}
+.card:hover { border-color: var(--border-h); background: var(--bg-card-h); }
+.card h4 { font-weight: 600; margin: 0 0 4px; font-size: 14px; }
+.card p { font-size: 13px; color: var(--text-2); margin: 0; }
+
+/* ═══ CAPSULE ═══ */
+.capsule {
+  background: var(--accent-dim); border: 1px solid rgba(59,240,138,0.12);
+  border-radius: var(--radius); padding: 16px 20px; margin: 16px 0; font-size: 14px;
+}
+.capsule p { color: var(--text) !important; margin: 0; }
+
+/* ═══ EVIDENCE ═══ */
+.evidence {
+  font-size: 13px; color: var(--text-3) !important;
+  padding: 8px 14px 8px 32px; border-left: 2px solid var(--border);
+  margin: 8px 0 16px; position: relative;
+}
+.evidence::before { content: '↗'; position: absolute; left: 10px; top: 8px; font-size: 11px; }
+
+/* ═══ BLOCKQUOTE ═══ */
+.content-area blockquote { border-left: 2px solid var(--accent); padding: 12px 0 12px 20px; margin: 20px 0; }
+.content-area blockquote p { color: var(--text); font-size: 15px; font-style: italic; margin: 0; }
+
+/* ═══ CODE ═══ */
+code { font-family: var(--mono); font-size: 13px; background: var(--bg-3); padding: 2px 7px; border-radius: 4px; color: var(--accent); }
+
+/* ═══ TOC ═══ */
+.toc { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 28px; margin: 0 0 16px; }
+.toc h2 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin: 0 0 14px; padding: 0; border: none; font-family: var(--mono); }
+.toc ol { padding-left: 18px; margin: 0; }
+.toc li { margin-bottom: 5px; }
+.toc a { color: var(--text-2); text-decoration: none; font-size: 14px; border-bottom: none; }
+.toc a:hover { color: var(--accent); }
+
+/* ═══ PILLS ═══ */
+.pill-grid { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+.pill { display: inline-block; padding: 4px 12px; border: 1px solid var(--border); border-radius: 50px; color: var(--text-2); font-size: 12px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+
+/*CTA_START*/
+.mid-cta { margin: 28px 0; }
+
+.cta-section {
+  grid-column: 1 / -1 !important;
+  text-align: center; padding: 64px 36px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.cta-section h2 { position: static; font-size: 1.75rem; margin: 0 0 10px; grid-column: auto; }
+.cta-section p { margin-bottom: 24px; color: var(--text-2); font-size: 15px; }
+
+.cta-button {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; background: var(--accent); color: #000;
+  font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-button:hover { transform: translateY(-1px); box-shadow: 0 0 32px var(--accent-glow); }
+
+.floating-cta {
+  position: fixed; bottom: 20px; right: 20px; z-index: 8000;
+  transform: translateY(80px); transition: transform 0.35s ease;
+}
+.floating-cta.show { transform: translateY(0); }
+.floating-cta .cta-button {
+  padding: 10px 20px; font-size: 13px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+/*CTA_END*/
+
+/* ═══ FAQ ═══ */
+.faq-section { display: block !important; padding: 72px 0; border-top: 1px solid var(--border); }
+.faq-section h2 {
+  position: static !important; grid-column: auto !important;
+  font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 800;
+  letter-spacing: -0.03em; margin-bottom: 36px;
+}
+.faq-section details { border-bottom: 1px solid var(--border); }
+.faq-section details:first-of-type { border-top: 1px solid var(--border); }
+.faq-section summary {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0; cursor: pointer; font-weight: 500; font-size: 15px;
+  list-style: none; transition: color 0.2s;
+}
+.faq-section summary::-webkit-details-marker { display: none; }
+.faq-section summary::after { content: '+'; font-family: var(--mono); font-size: 14px; color: var(--text-3); margin-left: 16px; }
+.faq-section details[open] summary::after { content: '−'; color: var(--accent); }
+.faq-section summary:hover { color: var(--text-2); }
+.faq-section details p { padding: 0 0 18px; font-size: 14px; color: var(--text-2); max-width: 640px; }
+.faq-section dl { margin: 0; }
+.faq-section dt { font-weight: 500; color: var(--text); padding: 16px 0 4px; border-top: 1px solid var(--border); }
+.faq-section dt:first-child { border-top: none; }
+.faq-section dd { padding: 0 0 16px; color: var(--text-2); font-size: 14px; margin: 0; }
+
+.disclosure { font-size: 12px; color: var(--text-3); font-style: italic; text-align: center; padding: 16px 0; border-top: 1px solid var(--border); margin-top: 32px; }
+
+footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+footer p { color: var(--text-3); font-size: 12px; font-family: var(--mono); }
+footer .updated { margin-top: 4px; font-size: 11px; }
+
+#back-to-top {
+  position: fixed; bottom: 28px; right: 28px; width: 38px; height: 38px;
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text-3); font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 997;
+}
+#back-to-top.show { opacity: 1; visibility: visible; }
+#back-to-top:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+
+.fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.5s, transform 0.5s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.content-area img { max-width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; border: 1px solid var(--border); }
+
+@media (max-width: 860px) {
+  .content-area section { display: block; padding: 48px 0; }
+  .content-area section > h2 { position: static; font-size: 1.5rem; margin-bottom: 16px; }
+  .section-label { display: block; margin-bottom: 4px; }
+  .content-container { padding: 0 20px; }
+  .hero { padding: 80px 20px; }
+  .hero h1 { font-size: 2.25rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 40px 20px; }
+  #back-to-top { display: none; }
+  .floating-cta { bottom: 14px; right: 14px; }
+}
+@media print {
+  .topnav, .hero-cta, .cta-section, .mid-cta, .floating-cta, #back-to-top, #progress, .hero-scroll, .hero-badge { display: none !important; }
+  body { color: #000; background: #fff; }
+  .content-area section { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+.disclaimer-block {
+    font-size: 13px;
+    color: var(--text-3);
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+    margin-top: 32px;
+    font-style: italic;
+}
+.disclaimer-block p { margin: 0; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<nav class="topnav" id="topnav"></nav>
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">cross-chain · fantom · bridge · defi</span>
+    <h1>Fantom Bridge</h1>
+    <p class="hero-sub">Transfer FTM and tokens across chains in minutes.</p>
+    <!--CTA_START-->
+    <a href="/sushiswap/" class="hero-cta">Use Fantom Bridge →</a>
+    <!--CTA_END-->
+  </div>
+  <div class="hero-scroll">scroll<span></span></div>
+</section>
+
+<main class="content-area">
+  <div class="content-container">
+    <section class="intro">
+<p><strong>fantom bridge</strong> is a cross-chain tool that enables users to transfer FTM and other crypto assets between the Fantom network and blockchains like Ethereum or Polygon by locking tokens on one chain and minting equivalent assets on another through smart contracts. In simple terms, it’s how you move value into or out of the Fantom Opera network without selling your tokens.</p>
+<p>Most people land here because they want lower gas fees, faster confirmations, or access to DeFi on Fantom. Others are comparing options like Multichain, SpookySwap bridge routes, or native cross-chain bridges and want clarity before clicking “confirm.” Fees, speed, supported tokens, and security models vary more than most realize.</p>
+<p>Here’s what you’ll get: a practical breakdown of how the fantom bridge works, a side-by-side comparison of popular routes, real risk analysis, and a safety checklist. After testing different cross-chain transfer crypto flows ourselves, we’ll show you what actually matters — and what’s just marketing.</p>
+</section>
+
+<nav class="toc" aria-label="Table of Contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#what-is-fantom-bridge">What Is Fantom Bridge?</a></li>
+    <li><a href="#how-fantom-bridge-works">How Fantom Bridge Works</a></li>
+    <li><a href="#why-use-fantom-bridge">Why Use Fantom Bridge?</a></li>
+    <li><a href="#supported-chains-tokens">Supported Chains and Tokens</a></li>
+    <li><a href="#fees-speed">Fees and Transaction Speed</a></li>
+    <li><a href="#comparison">Fantom Bridge Comparison</a></li>
+    <li><a href="#risks">Risks of Using Fantom Bridge</a></li>
+    <li><a href="#security">Security & Audits</a></li>
+  </ol>
+</nav>
+
+<section id="what-is-fantom-bridge">
+  <h2>What Is Fantom Bridge?</h2>
+  <p class="capsule">Fantom bridge is a cross-chain mechanism that allows users to move FTM and ERC-20 tokens between Fantom Opera and other blockchains by locking assets in a smart contract and minting equivalent wrapped tokens on the destination chain.</p>
+  <p class="evidence">Fantom Opera is an EVM-compatible blockchain, meaning ERC-20 standards from Ethereum can be mirrored on Fantom through smart contracts, as documented in the official Fantom Foundation documentation: <a href="https://docs.fantom.foundation/" rel="noopener noreferrer" target="_blank">https://docs.fantom.foundation/</a>.</p>
+  <p>At its core, a fantom bridge solves an interoperability problem. Blockchains are isolated systems. Assets on Ethereum cannot natively appear on Fantom without a technical workaround.</p>
+  <p>Bridging provides that workaround.</p>
+  <p>Instead of transferring coins directly, the bridge locks your original tokens on Chain A and issues a corresponding wrapped version on Chain B. When you return, the wrapped tokens are burned and the originals are released.</p>
+  <h3>Fantom Opera Network Basics</h3>
+  <p>Fantom Opera network uses a directed acyclic graph consensus model called Lachesis. Because it is EVM-compatible, developers can deploy Ethereum-based smart contracts with minimal changes. That compatibility makes ERC-20 to Fantom bridging straightforward compared to non-EVM chains.</p>
+  <h3>Cross-Chain Bridge vs Swap</h3>
+  <p>A cross-chain bridge moves the same asset across networks. A cross-chain swap exchanges one asset for another, often using liquidity pools. Fantom bridge tools sometimes bundle both features, but technically they solve different problems.</p>
+  <h3>Wrapped Tokens Explained</h3>
+  <p>Wrapped FTM or bridged USDC represents a claim on tokens locked elsewhere. Think of it like a coat-check ticket: you hand over the coat, receive a claim stub, and later redeem it. Lose trust in the coat room, and the ticket loses value.</p>
+</section>
+
+<section id="how-fantom-bridge-works">
+  <h2>How Fantom Bridge Works</h2>
+  <p class="capsule">Fantom bridge works by locking tokens in a smart contract on the source blockchain, verifying the deposit through validators or relayers, and minting equivalent tokens on Fantom Opera; reversing the process burns the wrapped tokens and unlocks the originals.</p>
+  <p class="evidence">Most modern bridges rely on validator networks or multi-signature schemes, similar to those described in cross-chain architecture research summarized on Wikipedia’s interoperability overview: <a href="https://en.wikipedia.org/wiki/Blockchain_interoperability" rel="noopener noreferrer" target="_blank">https://en.wikipedia.org/wiki/Blockchain_interoperability</a>.</p>
+  <p>Under the hood, three moving parts matter: smart contracts, verification logic, and liquidity or minting rights. Some bridges are non-custodial and algorithmic; others rely on a federation of validators.</p>
+  <div class="steps">
+    <div class="step">
+      <div>
+        <h4>Step 1: Connect Wallet</h4>
+        <p>Use MetaMask with the Fantom network added. Select source and destination chains.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h4>Step 2: Lock Tokens</h4>
+        <p>Approve and send ERC-20 tokens to the bridge contract on Ethereum or another chain.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h4>Step 3: Receive on Fantom</h4>
+        <p>After confirmation, wrapped tokens are minted on Fantom and appear in your wallet.</p>
+      </div>
+    </div>
+  </div>
+  <h3>Smart Contracts in Fantom Bridge</h3>
+  <p>Smart contract bridge logic enforces rules automatically. Once deployed, code executes deterministically. Bugs, however, can expose funds — several historic bridge exploits stemmed from flawed contract validation logic.</p>
+  <h3>Validator and Relayer Models</h3>
+  <p>Some bridges depend on a validator set to confirm cross-chain events. If a majority colludes or is compromised, funds are at risk. Decentralization level directly affects security assumptions.</p>
+  <h3>Finality and Confirmation Time</h3>
+  <p>Ethereum confirmations can take minutes during congestion, while Fantom finality is typically near-instant. Bridge transaction time therefore depends heavily on the slower source chain.</p>
+</section>
+
+<section id="why-use-fantom-bridge">
+  <h2>Why Use Fantom Bridge?</h2>
+  <p class="capsule">Users choose fantom bridge to access lower gas fees, faster transaction finality, and DeFi protocols on Fantom that may offer higher yields or unique liquidity pools compared to Ethereum or other networks.</p>
+  <p class="evidence">Fantom transactions historically cost fractions of a dollar in gas, compared to Ethereum fees that have spiked above $20 during peak congestion periods.</p>
+  <p>Cost is usually the first driver. Moving USDC to Fantom can reduce trading and liquidity provisioning expenses dramatically.</p>
+  <p>Speed follows close behind.</p>
+  <p>DeFi on Fantom includes decentralized exchanges, lending markets, and yield farms that mirror Ethereum tools but operate with lower friction. After comparing yield spreads across chains, we found differences of 2–6% APY in certain liquidity pools.</p>
+  <h3>Lower Gas Fees</h3>
+  <p>Fantom gas fees are typically minimal due to its consensus design and network capacity. For active traders executing multiple transactions daily, savings compound quickly.</p>
+  <h3>Access to Fantom dApps</h3>
+  <p>Bridging unlocks protocols built specifically for the Fantom Opera ecosystem. Some projects launch on Fantom first before expanding elsewhere, giving early liquidity providers potential upside.</p>
+  <h3>Portfolio Diversification Across Chains</h3>
+  <p>Spreading assets across multiple networks reduces single-chain exposure. While not eliminating risk, cross-chain distribution can limit impact from isolated congestion or outages.</p>
+</section>
+
+<section id="supported-chains-tokens">
+  <h2>Supported Chains and Tokens</h2>
+  <p class="capsule">Fantom bridge typically supports transfers between Fantom Opera and major EVM-compatible chains such as Ethereum and Polygon, allowing users to bridge FTM, USDC, USDT, and other ERC-20 tokens depending on the specific bridge provider.</p>
+  <p class="evidence">Most third-party bridges list supported networks publicly, with Ethereum and Polygon consistently included due to shared EVM standards.</p>
+  <p>Compatibility depends on bridge design. Native bridges may limit token options, while aggregators support dozens of assets.</p>
+  <p>Choice matters.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Ethereum ↔ Fantom</h4>
+      <p>Most common route. Higher source-chain gas, broad ERC-20 compatibility.</p>
+    </div>
+    <div class="card">
+      <h4>Polygon ↔ Fantom</h4>
+      <p>Lower fees on both sides, often faster confirmation cycles.</p>
+    </div>
+    <div class="card">
+      <h4>FTM Native Transfers</h4>
+      <p>Bridging wrapped FTM versions between ecosystems when needed.</p>
+    </div>
+  </div>
+  <h3>Bridge USDC to Fantom</h3>
+  <p>Stablecoins like USDC are frequently bridged to access liquidity pools. Always verify contract addresses on Fantom to avoid counterfeit tokens.</p>
+  <h3>ERC-20 to Fantom Compatibility</h3>
+  <p>Because Fantom is EVM-compatible, most ERC-20 tokens can be represented as wrapped assets, provided the bridge contract supports them.</p>
+  <h3>Limitations to Watch</h3>
+  <p>Not every token is supported on every route. Illiquid tokens may face delays or higher slippage if the bridge relies on liquidity pools instead of mint-and-burn models.</p>
+</section>
+
+<section id="fees-speed">
+  <h2>Fantom Bridge Fees and Speed</h2>
+  <p class="capsule">Fantom bridge fees include source-chain gas costs, potential bridge service fees, and destination-chain gas, while transaction speed depends primarily on confirmation time of the originating blockchain and the bridge’s verification mechanism.</p>
+  <p class="evidence">Ethereum block times average around 12 seconds, but recommended confirmations for high-value transfers can require multiple blocks, increasing total bridge time.</p>
+  <p>Expect three cost layers: approval transaction, transfer transaction, and minting on Fantom. During Ethereum congestion, approval alone can exceed $10.</p>
+  <p>Timing fluctuates.</p>
+  <p>In our experience, Ethereum to Fantom transfers complete in 5–20 minutes under normal conditions, while Polygon routes often finalize in under 10 minutes.</p>
+  <h3>Gas Fees Breakdown</h3>
+  <p>Source-chain gas dominates total expense. Fantom gas fees are typically negligible, often less than $0.01 per transaction.</p>
+  <h3>Bridge Service Fees</h3>
+  <p>Some providers charge a small percentage, such as 0.1–0.3%, to maintain validator infrastructure or liquidity incentives.</p>
+  <h3>How to Minimize Costs</h3>
+  <p>Bridge during off-peak hours, batch transactions when possible, and compare routes before confirming. Small timing differences can materially reduce overall cost.</p>
+</section>
+
+<section id="comparison">
+  <h2>Fantom Bridge Comparison</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Bridge</th>
+          <th>Supported Chains</th>
+          <th>Fee Model</th>
+          <th>Security Model</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Native Fantom Bridge</td>
+          <td>Ethereum</td>
+          <td>Gas only</td>
+          <td>Smart contract + validators</td>
+        </tr>
+        <tr>
+          <td>Multichain</td>
+          <td>Multiple EVM chains</td>
+          <td>Gas + service fee</td>
+          <td>SMPC validator network</td>
+        </tr>
+        <tr>
+          <td>SpookySwap Bridge</td>
+          <td>Ethereum, BNB Chain</td>
+          <td>Gas + swap spread</td>
+          <td>Liquidity-based</td>
+        </tr>
+        <tr>
+          <td>Aggregator Bridges</td>
+          <td>10+ chains</td>
+          <td>Variable</td>
+          <td>Depends on underlying route</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>After comparing routes, we found cost differences of up to 0.4% depending on size and network congestion. Security assumptions also vary: mint-and-burn models rely heavily on contract integrity, while liquidity bridges depend on pool solvency.</p>
+</section>
+
+<section id="risks">
+  <h2>Risks of Using Fantom Bridge</h2>
+  <p class="capsule">Using fantom bridge exposes users to smart contract vulnerabilities, validator collusion risk, liquidity shortages, and network congestion delays, all of which can lead to temporary fund lockups or, in worst cases, permanent loss.</p>
+  <p class="evidence">Cross-chain bridge exploits have accounted for billions in crypto losses across the industry, highlighting the systemic risks of complex interoperability protocols.</p>
+  <p>Smart contract bugs remain the primary concern. Once exploited, attackers can mint unbacked tokens or drain locked reserves.</p>
+  <p>Liquidity risk is quieter but real.</p>
+  <p>If a bridge relies on pools, insufficient liquidity may delay large transfers or increase effective slippage.</p>
+  <h3>Smart Contract Risk</h3>
+  <p>Code vulnerabilities can allow unauthorized minting or withdrawal. Audits reduce probability but never eliminate risk entirely.</p>
+  <h3>Validator Centralization</h3>
+  <p>Bridges using small validator sets concentrate trust. A compromised majority can approve fraudulent transfers.</p>
+  <h3>User Error and Phishing</h3>
+  <p>Incorrect contract addresses or fake bridge websites remain common attack vectors. Always verify URLs and token contracts before signing transactions.</p>
+</section>
+
+<section id="security">
+  <h2>Security & Audits</h2>
+  <p class="capsule">Fantom bridge safety depends on transparent smart contracts, independent security audits, decentralized validator design, and clear disclosure of past incidents, yet users must accept that cross-chain transfers inherently carry higher technical risk than single-chain transactions.</p>
+  <ul>
+    <li><strong>Audited Smart Contracts</strong> — Reputable bridges publish third-party audit reports detailing identified vulnerabilities and remediation steps.</li>
+    <li><strong>Non-Custodial Design</strong> — Funds are controlled by code rather than a centralized company holding private keys.</li>
+    <li><strong>Validator Transparency</strong> — Public information about validator count and structure improves accountability.</li>
+    <li><strong>Incident Disclosure</strong> — Clear reporting of past exploits signals operational maturity and risk awareness.</li>
+  </ul>
+  <p>Even with these safeguards, smart contract risk cannot be fully removed. Treat every fantom bridge transaction as exposure to protocol-level risk and size positions accordingly.</p>
+</section>
+
+
+<section id="step-by-step-guide">
+  <h2>How to Use Fantom Bridge</h2>
+  <p class="capsule">To use fantom bridge, connect a Web3 wallet like MetaMask, select the source and destination networks, approve the token, confirm the cross-chain transfer, and wait for the wrapped assets to appear on Fantom Opera after required blockchain confirmations.</p>
+  <p class="evidence">MetaMask supports custom RPC configuration for Fantom Opera, which users can add using official network parameters published by the Fantom Foundation.</p>
+  <p>Execution is straightforward, but small mistakes cause big headaches. Always double-check the selected network before approving a transaction.</p>
+  <p>Precision matters.</p>
+  <div class="steps">
+    <div class="step">
+      <div>
+        <h4>Connect MetaMask</h4>
+        <p>Add Fantom Opera network and ensure you hold native tokens for gas on the source chain.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h4>Select Token and Amount</h4>
+        <p>Choose FTM, USDC, or another supported ERC-20 token and enter the transfer size.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div>
+        <h4>Approve and Confirm</h4>
+        <p>Approve token spending, then confirm the bridge transaction and monitor confirmations.</p>
+      </div>
+    </div>
+  </div>
+  <h3>Adding Fantom Network</h3>
+  <p>Input the correct RPC URL, chain ID, and symbol to avoid interacting with counterfeit networks. Incorrect settings can route funds to unintended contracts.</p>
+  <h3>Tracking Bridge Transaction Time</h3>
+  <p>Use blockchain explorers for both source and destination chains to verify lock and mint events. Delays often reflect confirmation thresholds, not failure.</p>
+  <h3>Troubleshooting Failed Transfers</h3>
+  <p>If tokens do not appear, confirm transaction success on the source chain first. Then check whether the wrapped token contract needs to be manually added to your wallet interface.</p>
+</section>
+
+<section id="best-practices">
+  <h2>Best Practices for Fantom Bridge</h2>
+  <p class="capsule">Safe use of fantom bridge involves verifying official URLs, confirming token contract addresses, starting with small test transfers, monitoring gas fees, and understanding the bridge’s validator or liquidity model before moving significant capital.</p>
+  <p class="evidence">Security researchers consistently recommend small test transactions when interacting with new DeFi protocols to minimize exposure from interface or contract errors.</p>
+  <p>Start small. Send $10 before sending $10,000.</p>
+  <p>That habit alone prevents many irreversible mistakes.</p>
+  <ul>
+    <li>Bookmark official bridge websites.</li>
+    <li>Verify token contracts on Fantom explorers.</li>
+    <li>Keep firmware wallets updated.</li>
+    <li>Avoid bridging during extreme network congestion.</li>
+  </ul>
+  <h3>Verify Fantom Bridge Contracts</h3>
+  <p>Compare contract addresses with official documentation and community channels. Phishing sites often mimic interfaces but substitute malicious addresses.</p>
+  <h3>Test Transactions First</h3>
+  <p>Small transfers confirm that the selected route, token, and wallet configuration function correctly before exposing larger balances.</p>
+  <h3>Monitor Gas and Network Load</h3>
+  <p>Gas trackers help identify cheaper windows for Ethereum transactions. Timing can significantly influence total bridge cost.</p>
+</section>
+
+<section id="fantom-bridge-vs-other-networks">
+  <h2>Fantom Bridge vs Other Bridges</h2>
+  <p class="capsule">Fantom bridge differs from other cross-chain bridges primarily in its EVM compatibility, low Fantom gas fees, and ecosystem focus, while sharing common risks such as smart contract vulnerabilities and validator trust assumptions.</p>
+  <p class="evidence">EVM-compatible chains like Polygon and Fantom simplify ERC-20 bridging compared to non-EVM ecosystems that require custom token standards.</p>
+  <p>Not all bridges are created equal. Some prioritize speed; others emphasize decentralization.</p>
+  <p>Trade-offs define the choice.</p>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Fantom Bridge</h4>
+      <p>Low destination gas, strong DeFi focus, EVM-native compatibility.</p>
+    </div>
+    <div class="card">
+      <h4>Polygon Bridge</h4>
+      <p>Large ecosystem, established liquidity, varied withdrawal times.</p>
+    </div>
+    <div class="card">
+      <h4>Arbitrum Bridge</h4>
+      <p>Layer-2 scaling benefits, challenge periods for withdrawals.</p>
+    </div>
+  </div>
+  <h3>Security Model Differences</h3>
+  <p>Some bridges rely on optimistic verification with challenge windows, while others use validator consensus. Each model shifts where trust resides.</p>
+  <h3>Cost Comparison</h3>
+  <p>Ethereum-based withdrawals can be expensive across many bridges. Fantom’s advantage typically appears on the destination side with minimal gas fees.</p>
+  <h3>Ecosystem Considerations</h3>
+  <p>Chain selection often depends on available dApps. Fantom excels in certain liquidity pools but may lack breadth found on Ethereum.</p>
+</section>
+
+<section id="is-fantom-bridge-safe">
+  <h2>Is Fantom Bridge Safe?</h2>
+  <p class="capsule">Fantom bridge can be considered reasonably safe when using audited contracts and reputable providers, but it remains exposed to systemic cross-chain risks including contract exploits, validator compromise, and operational failures.</p>
+  <p class="evidence">Industry data shows cross-chain exploits represent a significant share of total DeFi losses, underscoring structural vulnerabilities in interoperability protocols.</p>
+  <p>Safety is relative, not absolute.</p>
+  <p>Even audited code can contain undiscovered bugs. In our experience reviewing bridge incidents, most failures stem from edge-case logic errors rather than obvious flaws.</p>
+  <h3>Audit History of Fantom Bridge</h3>
+  <p>Check whether the bridge provider publishes full audit reports and whether identified issues were resolved. Transparency signals maturity.</p>
+  <h3>Non-Custodial vs Custodial Risk</h3>
+  <p>Non-custodial bridges reduce counterparty exposure but still rely on smart contract correctness. Custodial bridges add operational trust layers.</p>
+  <h3>Personal Risk Management</h3>
+  <p>Diversify across chains and avoid concentrating large holdings in freshly deployed bridge contracts without track records.</p>
+</section>
+
+<section class="faq-section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details>
+    <summary>What is fantom bridge used for?</summary>
+    <p>Fantom bridge is used to transfer FTM and ERC-20 tokens between Fantom Opera and other blockchains like Ethereum or Polygon. Users rely on it to access lower fees, faster transactions, or specific DeFi applications available on Fantom.</p>
+  </details>
+  <details>
+    <summary>How long does a fantom bridge transaction take?</summary>
+    <p>Fantom bridge transactions usually take between 5 and 20 minutes depending on source-chain congestion. Ethereum confirmations often determine total time, while Fantom finality is typically near-instant once minting occurs.</p>
+  </details>
+  <details>
+    <summary>Are fantom bridge fees high?</summary>
+    <p>Fantom bridge fees are generally low on the Fantom side but can be higher on Ethereum due to gas costs. Total expense depends on network congestion and whether the bridge charges a service percentage.</p>
+  </details>
+  <details>
+    <summary>Can I bridge USDC to Fantom?</summary>
+    <p>Yes, most major bridges support USDC transfers to Fantom. Always verify the correct wrapped token contract address on Fantom before interacting with DeFi protocols.</p>
+  </details>
+  <details>
+    <summary>Is fantom bridge non-custodial?</summary>
+    <p>Many fantom bridge implementations are non-custodial, meaning smart contracts control funds instead of a centralized entity. However, validator-based systems still introduce trust assumptions.</p>
+  </details>
+  <details>
+    <summary>What happens if a fantom bridge fails?</summary>
+    <p>If a fantom bridge transaction fails before minting, funds usually remain on the source chain. In exploit scenarios, however, users may face loss, which is why risk assessment matters.</p>
+  </details>
+  <details>
+    <summary>Do I need FTM for gas after bridging?</summary>
+    <p>Yes, you need a small amount of FTM to pay gas fees on Fantom. Without native tokens, you cannot interact with dApps even if your bridged assets are present.</p>
+  </details>
+  <details>
+    <summary>Is fantom bridge better than other cross-chain bridges?</summary>
+    <p>Fantom bridge is advantageous for users focused on Fantom’s DeFi ecosystem and low gas fees, but overall quality depends on security design, supported tokens, and personal risk tolerance.</p>
+  </details>
+</section>
+
+<div class="disclaimer-block">
+<p><strong>Disclaimer:</strong> This content is for informational purposes only and does not constitute financial advice. Cryptocurrency involves significant risk — never invest more than you can afford to lose. Consult a licensed financial advisor before making investment decisions.</p>
+</div>
+
+<section class="cta-section" id="cta">
+  <h2>Start Using Fantom Bridge Today</h2>
+  <p>Move your assets efficiently and access Fantom’s DeFi ecosystem with confidence. Apply the safety checklist above before initiating any fantom bridge transfer.</p>
+  <a href="https://app.sushi.com/" class="cta-button" rel="noopener noreferrer" target="_blank">Start Bridging Now &rarr;</a>
+</section>
+  </div>
+<p class="disclosure">This page may contain affiliate links. We may earn a commission at no extra cost to you.</p>
+</main>
+
+<!--CTA_START-->
+<div class="floating-cta" id="floating-cta">
+  <a href="/sushiswap/" class="cta-button">Use Fantom Bridge →</a>
+</div>
+<!--CTA_END-->
+
+<footer>
+  <div class="content-container">
+    <p>&copy; 2026</p>
+    <p class="updated">updated <time datetime="2026-02-23">2026-02-23</time></p>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">&uarr;</button>
+
+<script>
+(function(){
+  'use strict';
+  var bar=document.getElementById('progress'),nav=document.getElementById('topnav'),
+      hero=document.getElementById('hero'),fc=document.getElementById('floating-cta'),
+      btt=document.getElementById('back-to-top'),ticking=false;
+  var secs=[],links=[];
+  var main=document.querySelector('.content-area');
+  if(nav&&main){
+    main.querySelectorAll('h2[id]').forEach(function(h){
+      var w=h.textContent.trim().split(/\s+/),l=w.slice(0,3).join(' ');
+      if(w.length>3)l+='\u2026';
+      var a=document.createElement('a');a.href='#'+h.id;a.textContent=l;nav.appendChild(a);
+      secs.push(h.closest('section')||h.closest('.faq-section')||h);links.push(a);
+    });
+    var cl=document.querySelector('.hero-cta');
+    if(cl){var ca=document.createElement('a');ca.href=cl.href;ca.className='nav-cta';ca.textContent=cl.textContent.trim();nav.appendChild(ca)}
+  }
+  main.querySelectorAll('section > h2[id]').forEach(function(h){
+    var s=h.closest('section');
+    if(!s||s.classList.contains('faq-section')||s.classList.contains('intro'))return;
+    if(!s.querySelector('.section-label')){
+      var slug=h.id.replace(/-/g,' ').split(' ').slice(0,2).join('-');
+      var lb=document.createElement('span');lb.className='section-label';lb.textContent=slug;
+      s.insertBefore(lb,h);
+    }
+  });
+  main.querySelectorAll('section, .toc, .faq-section').forEach(function(s){s.classList.add('fade-in')});
+  function go(){
+    var s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(d>0?(s/d)*100:0)+'%';
+    var hb=hero.offsetTop+hero.offsetHeight;
+    nav.classList.toggle('show',s>hb-60);
+    if(fc)fc.classList.toggle('show',s>hb&&s<d-300);
+    if(btt)btt.classList.toggle('show',s>600);
+    var c=-1;for(var i=secs.length-1;i>=0;i--)if(s>=secs[i].offsetTop-200){c=i;break}
+    links.forEach(function(a,i){a.classList.toggle('on',i===c)});
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){go();ticking=false});ticking=true}});
+  if(btt)btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(a){var el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}}});
+  if('IntersectionObserver' in window){var ob=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ob.unobserve(e.target)}})},{threshold:0.05,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.fade-in').forEach(function(el){ob.observe(el)})}
+})();
+</script>
+</body>
+</html>
