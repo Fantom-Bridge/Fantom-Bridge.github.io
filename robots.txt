@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /sushiswap/
-Sitemap: https://fantom-bridge.github.io/sitemap.xml
