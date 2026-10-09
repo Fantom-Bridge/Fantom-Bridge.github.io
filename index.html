@@ -1,1 +1,267 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fantom Bridge</title><meta name="description" content="Fantom Bridge moves ETH and tokens to Fantom through a fast, low-fee cross-chain route."><link rel="canonical" href="https://fantom-bridge.github.io/"><meta name="theme-color" content="#ffffff"><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="web-app-manifest-192x192.png"><link rel="stylesheet" href="style.css"></head><body><div id="root"><h1>Fantom Bridge</h1><h2>Fantom bridge</h2><p><strong>Fantom Bridge</strong> moves ETH and tokens to Fantom through a fast, low-fee cross-chain route.</p></div><script src="app.js" defer></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fantom Bridge — Move Assets to Fantom (Sonic)</title>
+  <meta name="description" content="Use a Fantom Bridge to carry ETH, USDC and tokens onto Fantom, the Lachesis aBFT network now evolving into Sonic. Check FTM gas, fees and timing, and keep self-custody the whole way.">
+  <link rel="canonical" href="https://fantom-bridge.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fantom Bridge">
+  <meta property="og:description" content="Use a Fantom Bridge to carry ETH, USDC and tokens onto Fantom, the Lachesis aBFT network now evolving into Sonic. Check FTM gas, fees and timing, and keep self-custody the whole way.">
+  <meta property="og:url" content="https://fantom-bridge.github.io/">
+  <meta property="og:image" content="https://fantom-bridge.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fantom Bridge">
+  <meta name="twitter:description" content="Use a Fantom Bridge to carry ETH, USDC and tokens onto Fantom, the Lachesis aBFT network now evolving into Sonic. Check FTM gas, fees and timing, and keep self-custody the whole way.">
+  <meta name="twitter:image" content="https://fantom-bridge.github.io/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://fantom-bridge.github.io/#website", "url": "https://fantom-bridge.github.io/", "name": "Fantom Bridge — Move Assets to Fantom (Sonic)"}, {"@type": "WebPage", "@id": "https://fantom-bridge.github.io/#webpage", "url": "https://fantom-bridge.github.io/", "name": "Fantom Bridge — Move Assets to Fantom (Sonic)", "isPartOf": {"@id": "https://fantom-bridge.github.io/#website"}, "description": "Use a Fantom Bridge to carry ETH, USDC and tokens onto Fantom, the Lachesis aBFT network now evolving into Sonic. Check FTM gas, fees and timing, and keep self-custody the whole way.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "Fantom Bridge", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fantom-bridge.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bridges"}, {"@type": "ListItem", "position": 3, "name": "Fantom Bridge"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a Fantom Bridge actually do?", "acceptedAnswer": {"@type": "Answer", "text": "It locks or burns your asset on the source chain and mints the equivalent on Fantom, moving value between networks while your keys stay in control the entire time."}}, {"@type": "Question", "name": "Why is Fantom bridging fast?", "acceptedAnswer": {"@type": "Answer", "text": "Fantom's Lachesis consensus reaches finality in roughly a second, so once the source chain confirms your deposit, Fantom rarely adds much extra delay on top of it."}}, {"@type": "Question", "name": "Do I need FTM after bridging?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Fees on Fantom are paid in FTM, not ETH, so bridge a small amount along with your main asset or swap for FTM right after you arrive."}}, {"@type": "Question", "name": "What is the difference between Fantom and Sonic?", "acceptedAnswer": {"@type": "Answer", "text": "Sonic is the network's upgraded execution layer, built to raise throughput while keeping the same self-custody model; it is worth checking current documentation for which chain a given app currently targets."}}, {"@type": "Question", "name": "How much does a Fantom Bridge transfer cost?", "acceptedAnswer": {"@type": "Answer", "text": "You pay the source chain's gas plus a small protocol fee to deposit; activity on Fantom itself afterward is paid in FTM and costs very little."}}, {"@type": "Question", "name": "Can I send assets back to Ethereum?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The canonical route works both directions — start a withdrawal from Fantom and claim the released asset on Ethereum once it settles."}}, {"@type": "Question", "name": "Is a Fantom Bridge transaction reversible if it fails?", "acceptedAnswer": {"@type": "Answer", "text": "An unconfirmed deposit simply does not credit Fantom, and you only lose the gas spent on the attempt; nothing is deducted from the amount you intended to bridge until it actually goes through."}}]}]}</script>
+  <style>
+    :root{--bg:#FAFBFD;--surface:#FFFFFF;--text:#101823;--muted:#566273;--accent:#1D4ED8;--accent-ink:#FFFFFF;--radius:12px;--display:"Sora";--body:"Inter"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .c6593fa { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .cca32aa { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .cca32aa:focus { transform: translateY(0); }
+    .c828b98 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c16df31 { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .ca8386d { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .c42fd01 { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .c3c16ed { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .cfdf29e { display: flex; align-items: center; gap: 1.8rem; }
+    .cfdf29e > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .cfdf29e > a:not(.c75f8c8) { color: var(--muted); }
+    .c75f8c8 { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .c75f8c8:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .c16df31 .c75f8c8 { min-height: 42px; padding: .65rem 1rem; }
+    .c368b44 { padding-block: 1.8rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .c1390ef { color: var(--muted); }
+    .c1390ef a, a.c1390ef { color: var(--muted); text-decoration: none; }
+    .c1390ef a:hover, a.c1390ef:hover { color: var(--accent); text-decoration: underline; }
+    .c1390ef ol, .c1390ef ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .c6c4e63 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,6vw,5.5rem); align-items: center; padding-block: 3rem 5.5rem; }
+    .c32665c { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .c32665c::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .cd1d629 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .cf2256a { position: relative; min-width: 0; padding: clamp(1.25rem,3vw,2rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .ca12db5 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1.6rem; }
+    .ca12db5 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .c78b9f9 { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .c78b9f9::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .ce87273 { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .c8b7e1b { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .c8b7e1b:last-child { align-items: flex-end; }
+    .cabb1a7, .c703550 { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .c25df4f { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .c25df4f img, .c25df4f svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .c559d8f { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .c559d8f .c3c16ed { stroke: var(--accent); }
+    .c703550 { display: block; margin-bottom: .5rem; color: var(--text); }
+    .c74e3ce { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .c74e3ce:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .c74e3ce input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.9rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .c74e3ce input:focus { outline: 0; }
+    .c2784e6 { color: var(--muted); font-size: .8rem; }
+    .ccd1fc0 { margin: .55rem 0 1.3rem; color: var(--muted); font-size: .74rem; }
+    .c9984a8 { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .ce9a25f { padding: 1.2rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .ca9e3f8 { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .c652834 { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .c652834 small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .ce9a25f dl { display: grid; gap: .6rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .ce9a25f dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .ce9a25f dt { color: var(--muted); }
+    .ce9a25f dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .c30cf32 { margin-block: 1rem; color: var(--muted); font-size: .75rem; }
+    .c30cf32 summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .c30cf32 p { margin: .65rem 0 0; }
+    .cf2256a > .c75f8c8 { width: 100%; }
+    .ce31c5b { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .cadb399 { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .c80d1af { max-width: 100%; overflow-x: auto; }
+    .c3cca4d { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .c3cca4d caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .c3cca4d th, .c3cca4d td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .c3cca4d th { color: var(--muted); font-weight: 500; }
+    .c3cca4d thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .c3cca4d tbody tr:last-child > * { border-bottom: 0; }
+    .c5edc2a { max-width: 820px; padding-block: 4rem 2rem; }
+    .c4cadd7 { margin-bottom: 3.3rem; }
+    .c6b2420 { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .c3d4f99 { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .c3d4f99 p { margin-bottom: 1.2rem; }
+    .c3d4f99 strong, .c3d4f99 h3, .c3d4f99 h4 { color: var(--text); }
+    .c3d4f99 ul, .c3d4f99 ol { padding-left: 1.3rem; }
+    .c3d4f99 li { padding-left: .3rem; margin-block: .55rem; }
+    .c3d4f99 li::marker { color: var(--accent); }
+    .c3d4f99 blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .c3d4f99 img { height: auto; border-radius: var(--radius); }
+    .c3d4f99 pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .c3d4f99 code, .c3d4f99 pre { font-family: var(--body); }
+    .cf4a607 { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .c7c702b { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .c7c702b::-webkit-details-marker { display: none; }
+    .c7c702b::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .c7c702b::after { content: "−"; }
+    .cf4a607[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .c7c702b:focus-visible { outline-offset: -5px; }
+    .c64f84a { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .c64f84a > :last-child { margin-bottom: 0; }
+    .c655239 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .c655239 .cadb399 { font-size: 1.25rem; }
+    .c84d862 { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .c78825b { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .c78825b a, a.c78825b { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .c78825b a:hover, a.c78825b:hover { color: var(--accent); }
+    .c85bdc5 { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c3f9d28 { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .c3f9d28 p { margin: 0; }
+    .c3f9d28 a { color: var(--muted); }
+    @media (max-width: 850px) { .c6c4e63 { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c95d3d9 { max-width: 650px; } .cf2256a { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .cd1d629 { max-width: 60ch; } }
+    @media (max-width: 540px) { .c6593fa { width: calc(100% - 2rem); } .c16df31 { min-height: 76px; gap: .7rem; } .ca8386d { font-size: .95rem; gap: .45rem; } .c42fd01 { width: 2rem; height: 2rem; } .cfdf29e { gap: .6rem; } .cfdf29e > a:not(.c75f8c8) { display: none; } .c16df31 .c75f8c8 { padding-inline: .85rem; font-size: .8rem; } .ce31c5b { padding: 1.25rem; } .c3cca4d th, .c3cca4d td { padding: .8rem .55rem; } .c95d3d9 > .c75f8c8 { width: 100%; } .c5edc2a { padding-top: 2.8rem; } .c3f9d28 { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c75f8c8, .c74e3ce { transition: none; } .c75f8c8:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <a class="cca32aa" href="#content">Skip to content</a>
+  <header class="c828b98">
+    <nav class="c16df31 c6593fa" aria-label="Primary navigation">
+      <a class="ca8386d" href="#top" aria-label="Transfer guide, top of page">
+        <span class="c42fd01" aria-hidden="true"><svg class="c3c16ed" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Transfer guide
+      </a>
+      <div class="cfdf29e">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="c75f8c8" href="dashboard/">Open app</a>
+      </div>
+    </nav>
+  </header>
+  <div class="c6593fa" id="top">
+    <div class="c368b44"><nav class="c1390ef" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Bridges</span> <span>/</span> <span>Fantom Bridge</span></nav></div>
+    <section class="c6c4e63" aria-labelledby="hero-title">
+      <div class="c95d3d9">
+        <p class="c32665c">Plan your transfer</p>
+        <h1 id="hero-title">Fantom <em>Bridge</em>.</h1>
+        <p class="cd1d629">A Fantom Bridge carries assets from Ethereum onto Fantom, a layer-1 network whose Lachesis aBFT consensus settles transactions in roughly a second and is now evolving toward the upgraded Sonic chain. Each deposit shows the fee and the arriving balance before you sign, lands on Fantom shortly after Ethereum confirms the transaction, and leaves custody with your own wallet the whole time.</p>
+        <a class="c75f8c8" href="dashboard/">Open app <svg class="c3c16ed" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </div>
+      <aside class="cf2256a" aria-labelledby="widget-title">
+        <div class="ca12db5">
+          <h2 id="widget-title">Transfer estimator</h2>
+          <span class="c78b9f9">Amount-based estimate</span>
+        </div>
+        <div class="ce87273" aria-label="Transfer route">
+          <div class="c8b7e1b"><span class="cabb1a7">From</span><div class="c25df4f"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></div></div>
+          <span class="c559d8f" aria-hidden="true"><svg class="c3c16ed" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+          <div class="c8b7e1b"><span class="cabb1a7">To</span><div class="c25df4f"></div></div>
+        </div>
+        <label class="c703550" for="amount">Amount to send</label>
+        <div class="c74e3ce">
+          <input id="amount" type="number" inputmode="decimal" min="0.01" max="1000000000000" step="0.01" value="1000" required aria-describedby="amount-help amount-error">
+          <span class="c2784e6">units</span>
+        </div>
+        <p class="ccd1fc0" id="amount-help">Enter an amount to calculate fees and transfer time.</p>
+        <p class="c9984a8" id="amount-error" hidden></p>
+        <div class="ce9a25f" role="status" aria-live="polite" aria-atomic="true">
+          <div class="ca9e3f8">Estimated amount after fees</div>
+          <output class="c652834" id="result" for="amount">—</output>
+          <dl>
+            <div><dt>Estimated fee</dt><dd id="fee">—</dd></div>
+            <div><dt>Estimated time</dt><dd id="duration">—</dd></div>
+          </dl>
+        </div>
+        <details class="c30cf32">
+          <summary>How the estimate is calculated</summary>
+          <p>Fee = 0.25 units + 0.3% of the amount, rounded to two decimal places and capped at the amount sent. The remaining amount uses the same units, at a 1:1 conversion. Time starts at 2 minutes, adds 1 minute per 2,500 units or part thereof, and is capped at 12 minutes. The displayed range adds 2 minutes to that estimate.</p>
+        </details>
+        <noscript><p class="ccd1fc0">Enable JavaScript to calculate the estimate.</p></noscript>
+        <a class="c75f8c8" href="dashboard/">Continue to dashboard <svg class="c3c16ed" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="ce31c5b" id="facts" aria-labelledby="facts-title">
+      <h2 class="cadb399" id="facts-title">Key facts</h2>
+      <div class="c80d1af"><table class="c3cca4d"><tbody><tr><th scope="row">Network</th><td>Fantom Opera, migrating to Sonic</td></tr>
+<tr><th scope="row">Consensus</th><td>Lachesis aBFT, near-instant finality</td></tr>
+<tr><th scope="row">Gas token</th><td>FTM (S on Sonic)</td></tr>
+<tr><th scope="row">Deposit time</th><td>Seconds to a few minutes</td></tr>
+<tr><th scope="row">Withdrawal time</th><td>Minutes, no long dispute window</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — you hold your keys</td></tr></tbody></table></div>
+    </section>
+  </div>
+  <main class="c5edc2a c6593fa" id="content">
+    <section class="c4cadd7"><h2 class="c6b2420">What a Fantom Bridge Does</h2><div class="c3d4f99"><strong>A Fantom Bridge locks or burns your asset on one chain and mints the matching amount on Fantom, so value crosses from Ethereum to Fantom without ever sitting in a custodian's account.</strong> Deposit and the bridge contract on Ethereum holds your ETH or token while Fantom credits your address once the source transaction is confirmed. Withdraw and the sequence reverses: the asset is burned on Fantom and released on Ethereum after the exit is proven. Because Fantom's own consensus finalizes blocks in about a second, the Fantom side of a transfer rarely becomes the slow part of the trip — the Ethereum confirmation usually sets the pace instead.<h3>Why Lachesis speeds up the Fantom side</h3>Fantom runs on <strong>Lachesis</strong>, an asynchronous Byzantine fault-tolerant consensus described in <a href="https://en.wikipedia.org/wiki/Byzantine_fault_tolerance" rel="nofollow noopener" target="_blank">general BFT literature</a> as a family of protocols that reach agreement without waiting on a single leader. Validators exchange event blocks and reach finality in roughly a second rather than waiting several minutes for probabilistic confirmations, which is why a deposit typically shows up on Fantom almost as soon as Ethereum has settled the source transaction.<h3>What you can carry across</h3>ETH and major stablecoins such as USDC and USDT are the common deposits, alongside most ERC-20 tokens Fantom's ecosystem lists. The asset keeps its identity once it lands — bridged USDC still spends as USDC on Fantom DeFi — and the same canonical path can send it back to Ethereum whenever you choose.</div></section>
+<section class="c4cadd7"><h2 class="c6b2420">FTM Gas and the Fantom Bridge to Sonic</h2><div class="c3d4f99">Fantom charges transaction fees in its native token, FTM, not in ETH, so the first thing to plan after a Fantom Bridge deposit is a small FTM balance for gas. Fantom's team has also been rolling the network forward into Sonic, an upgraded execution layer that keeps the same self-custody model while raising throughput; the native token on that upgraded chain is referred to as S. Either way, arriving with a little gas already set aside saves a second trip to a bridge just to cover a swap.<h3>Getting your first FTM</h3>Many people bridge a small amount of FTM alongside their main asset so the very first transaction on Fantom has gas ready. Others arrive with only ETH or a stablecoin and swap a portion for FTM on a Fantom-based exchange immediately after the deposit confirms — either approach works, as long as some FTM lands before you try to interact with anything else.<h3>Checking the migration to Sonic</h3>Because the network has been transitioning toward Sonic, it is worth confirming which chain a given app or bridge route currently targets before moving a large balance. The <a href="https://docs.fantom.foundation/" rel="nofollow noopener" target="_blank">Fantom documentation</a> tracks the current state of that migration and which contracts are considered canonical at any given time.</div></section>
+<section class="c4cadd7"><h2 class="c6b2420">Fantom Bridge Fees and Timing</h2><div class="c3d4f99">A Fantom Bridge deposit costs Ethereum gas for the source transaction plus a small protocol fee; once assets are on Fantom, further activity is paid in FTM and tends to be inexpensive thanks to the network's own fee market. Timing leans in your favor on both legs compared with many optimistic rollups, since Lachesis finality removes the long dispute window that those designs require before releasing funds. The table below lays out what to expect.<table><thead><tr><th>Direction</th><th>What you pay</th><th>Typical time</th></tr></thead><tbody><tr><td>Deposit to Fantom</td><td>Ethereum gas + protocol fee</td><td>Minutes after confirmation</td></tr><tr><td>Activity on Fantom</td><td>FTM gas (low cost)</td><td>About a second per transaction</td></tr><tr><td>Withdrawal to Ethereum</td><td>Fantom gas, then Ethereum gas to finalize</td><td>Minutes to a short settlement period</td></tr></tbody></table><h3>Reading the quote before you sign</h3>Every quote should show the amount leaving, the fee, and the amount that lands on the other side; judge a route by that landing figure rather than the advertised rate. You can verify a completed transfer independently by looking up your address on <a href="https://ftmscan.com/" rel="nofollow noopener" target="_blank">FTMScan</a>, which records every deposit and withdrawal that touches the network.</div></section>
+<section class="c4cadd7"><h2 class="c6b2420">Deposit and Withdrawal Through a Fantom Bridge</h2><div class="c3d4f99">The sequence stays the same each time you use it, which makes a Fantom Bridge predictable once you have completed it once.<ul><li>Pick Ethereum as the source chain and Fantom as the destination in your bridge of choice.</li><li>Enter the amount and review the fee plus the amount that will arrive on Fantom.</li><li>Approve the token if it is an ERC-20, then sign the deposit and pay Ethereum gas.</li><li>Wait for Ethereum to confirm; the balance appears on Fantom within a few minutes.</li><li>To go back, start a withdrawal from Fantom and claim the released asset on Ethereum once it settles.</li></ul></div></section>
+<section class="c4cadd7"><h2 class="c6b2420">Is a Fantom Bridge Safe to Use?</h2><div class="c3d4f99">A canonical Fantom Bridge never takes custody of what you send — your keys sign every step, and the contract only moves what you approve. The risks that remain are the ones you control at the moment of signing, so it pays to slow down there rather than anywhere else.<h3>Managing token approvals</h3>Grant an ERC-20 approval sized to the transfer you are actually making rather than an open-ended allowance, and clear out old approvals from bridges or apps you no longer use. A wallet with fewer standing permissions gives any future exploit less to reach for.<h3>Recovery phrases stay offline</h3>A legitimate Fantom Bridge interface only ever asks for a transaction signature it shows you in your own wallet. It has no reason to request your recovery words in a form, a chat window, or a support ticket, and any message that asks for them by any other channel should be ignored outright.</div></section>
+<section class="c4cadd7"><h2 class="c6b2420">What You Can Do on Fantom Once You Bridge</h2><div class="c3d4f99">Bridging is only the arrival point. Once assets sit on Fantom, they work across its decentralized exchanges, lending markets and liquidity pools, with FTM covering the gas for every interaction. You can track the network's active liquidity and the apps holding it on <a href="https://defillama.com/chain/Fantom" rel="nofollow noopener" target="_blank">DefiLlama's Fantom page</a> before deciding where to put a deposit to work, and when you are ready to leave, the same canonical exit route hands native ETH back on Ethereum.</div></section>
+<section class="c4cadd7"><h2 class="c6b2420">Fantom Bridge vs Third-Party Routes</h2><div class="c3d4f99">You can reach Fantom through the canonical Fantom Bridge or through a third-party liquidity bridge that fronts funds instead of waiting on the official contract. The canonical path mints the reference representation of your asset and suits larger or long-term transfers, while a third-party route can sometimes complete faster because it uses its own reserves rather than the standard settlement sequence — at the cost of an extra fee and a separate trust assumption. Background on how bridging works at a protocol level is covered in <a href="https://ethereum.org/en/developers/docs/bridges/" rel="nofollow noopener" target="_blank">Ethereum's own developer documentation</a>, which is useful context no matter which specific route you end up choosing.</div></section>
+    <details class="cf4a607"><summary class="c7c702b">What does a Fantom Bridge actually do?</summary><div class="c64f84a">It locks or burns your asset on the source chain and mints the equivalent on Fantom, moving value between networks while your keys stay in control the entire time.</div></details>
+<details class="cf4a607"><summary class="c7c702b">Why is Fantom bridging fast?</summary><div class="c64f84a">Fantom's Lachesis consensus reaches finality in roughly a second, so once the source chain confirms your deposit, Fantom rarely adds much extra delay on top of it.</div></details>
+<details class="cf4a607"><summary class="c7c702b">Do I need FTM after bridging?</summary><div class="c64f84a">Yes. Fees on Fantom are paid in FTM, not ETH, so bridge a small amount along with your main asset or swap for FTM right after you arrive.</div></details>
+<details class="cf4a607"><summary class="c7c702b">What is the difference between Fantom and Sonic?</summary><div class="c64f84a">Sonic is the network's upgraded execution layer, built to raise throughput while keeping the same self-custody model; it is worth checking current documentation for which chain a given app currently targets.</div></details>
+<details class="cf4a607"><summary class="c7c702b">How much does a Fantom Bridge transfer cost?</summary><div class="c64f84a">You pay the source chain's gas plus a small protocol fee to deposit; activity on Fantom itself afterward is paid in FTM and costs very little.</div></details>
+<details class="cf4a607"><summary class="c7c702b">Can I send assets back to Ethereum?</summary><div class="c64f84a">Yes. The canonical route works both directions — start a withdrawal from Fantom and claim the released asset on Ethereum once it settles.</div></details>
+<details class="cf4a607"><summary class="c7c702b">Is a Fantom Bridge transaction reversible if it fails?</summary><div class="c64f84a">An unconfirmed deposit simply does not credit Fantom, and you only lose the gas spent on the attempt; nothing is deducted from the amount you intended to bridge until it actually goes through.</div></details>
+  </main>
+  <section class="c655239 c6593fa" id="sources" aria-labelledby="sources-title">
+    <h2 class="cadb399" id="sources-title">Sources</h2>
+    <ul class="c84d862"><li><a class="c78825b" href="https://docs.fantom.foundation/" rel="nofollow noopener" target="_blank">Fantom Foundation documentation</a></li>
+<li><a class="c78825b" href="https://ftmscan.com/" rel="nofollow noopener" target="_blank">FTMScan explorer</a></li>
+<li><a class="c78825b" href="https://defillama.com/chain/Fantom" rel="nofollow noopener" target="_blank">DefiLlama — Fantom chain overview</a></li>
+<li><a class="c78825b" href="https://ethereum.org/en/developers/docs/bridges/" rel="nofollow noopener" target="_blank">Ethereum.org — bridges explained</a></li></ul>
+  </section>
+  <footer class="c85bdc5">
+    <div class="c3f9d28 c6593fa">
+      <p>Updated Oct 09, 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const amount = document.getElementById('amount');
+      const result = document.getElementById('result');
+      const fee = document.getElementById('fee');
+      const duration = document.getElementById('duration');
+      const error = document.getElementById('amount-error');
+      const format = new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const calculate = () => {
+        const value = amount.valueAsNumber;
+        if (!amount.validity.valid || !Number.isFinite(value)) {
+          amount.setAttribute('aria-invalid', 'true');
+          error.textContent = 'Enter an amount from 0.01 to 1,000,000,000,000 with up to two decimal places.';
+          error.hidden = false;
+          result.textContent = '—';
+          fee.textContent = '—';
+          duration.textContent = '—';
+          return;
+        }
+        amount.removeAttribute('aria-invalid');
+        error.hidden = true;
+        error.textContent = '';
+        const amountCents = Math.round(value * 100);
+        const feeCents = Math.min(amountCents, Math.round(25 + amountCents * 0.003));
+        const minutes = Math.min(12, 2 + Math.ceil(value / 2500));
+        result.textContent = format.format((amountCents - feeCents) / 100) + ' units';
+        fee.textContent = format.format(feeCents / 100) + ' units';
+        duration.textContent = minutes + '–' + (minutes + 2) + ' min';
+      };
+      amount.addEventListener('input', calculate);
+      calculate();
+    })();
+  </script>
+</body>
+</html>

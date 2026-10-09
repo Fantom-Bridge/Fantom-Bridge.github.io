@@ -1,0 +1,3 @@
+# Fantom Bridge
+
+Use a Fantom Bridge to carry ETH, USDC and tokens onto Fantom, the Lachesis aBFT network now evolving into Sonic. Check FTM gas, fees and timing, and keep self-custody the whole way.
