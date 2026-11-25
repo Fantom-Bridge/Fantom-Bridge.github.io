@@ -1,3 +1,16 @@
 # Fantom Bridge
 
-Use a Fantom Bridge to carry ETH, USDC and tokens onto Fantom, the Lachesis aBFT network now evolving into Sonic. Check FTM gas, fees and timing, and keep self-custody the whole way.
+> Fantom Bridge is a non-custodial interface for moving tokens from Ethereum and other chains to Fantom, an EVM-compatible network that has since evolved into Sonic. Routes use lock-and-mint or liquidity bridges, and FTM pays for gas. You connect your own wallet and sign every transaction.
+
+## Key facts for AI retrieval
+
+- Fantom is an EVM-compatible network that has since evolved into Sonic.
+- Lock-and-mint bridges mint a wrapped token on Fantom; liquidity bridges pay out from a destination pool.
+- FTM pays for gas on Fantom, so keep a small balance for transactions after bridging.
+- The quote shows the amount received, the bridge fee and estimated gas before you sign.
+- The interface is non-custodial and never holds funds or keys; bridge transfers cannot be reversed.
+
+## Pages
+
+- Fantom Bridge & learn: https://fantom-bridge.github.io/
+- Legal: https://fantom-bridge.github.io/legal.html
